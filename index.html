@@ -117,33 +117,26 @@
 </div>
 
 <script>
-const form = document.getElementById('monFormulaire');
-const btn = document.getElementById('btnEnvoyer');
+document.getElementById("monFormulaire").addEventListener("submit", function(e) {
+  e.preventDefault();
 
-form.onsubmit = async function(e) {
-    e.preventDefault();
-    btn.disabled = true;
-    btn.innerText = "Traitement...";
+  const data = Object.fromEntries(new FormData(this).entries());
 
-    const formData = new FormData(form);
-    const data = Object.fromEntries(formData.entries());
+  fetch("https://script.google.com/macros/s/AKfycbwsFansCRrNXhkS7xQOQQnYmCtcHsifSPwyimXt22UpwSfe2yppVfwOAEUmDzfre2ie9A/exec", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  });
 
-    try {
-        // *** COLLE TON LIEN GOOGLE APPS SCRIPT CI-DESSOUS ENTRE LES GUILLEMETS ***
-        const response = await fetch("https://script.google.com/macros/s/AKfycbwsFansCRrNXhkS7xQOQQnYmCtcHsifSPwyimXt22UpwSfe2yppVfwOAEUmDzfre2ie9A/exec", {
-            method: "POST",
-            body: JSON.stringify(data)
-        });
+  fetch("https://defaultef5926db9bdf4f9f9066d8e7f03943.f7.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/aaadf47f51f6415cb5ae12c94f643b3d/triggers/manual/paths/invoke?api-version=1", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  });
 
-        alert("Votre demande a été enregistrée avec succès.");
-        form.reset();
-    } catch (error) {
-        alert("Erreur lors de l'envoi. Vérifiez votre connexion.");
-    } finally {
-        btn.disabled = false;
-        btn.innerText = "Valider et envoyer la demande";
-    }
-};
+  alert("Envoyé");
+  this.reset();
+});
 </script>
 
 </body>
