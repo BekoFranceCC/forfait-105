@@ -135,10 +135,6 @@ form.onsubmit = async function(e) {
             body: JSON.stringify(data)
         });
 
-fetch("https://defaultef5926db9bdf4f9f9066d8e7f03943.f7.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/aaadf47f51f6415cb5ae12c94f643b3d/triggers/manual/paths/invoke?api-version=1", {
-    method: "POST",
-    body: JSON.stringify(data)
-  });
         alert("Votre demande a été enregistrée avec succès.");
         form.reset();
     } catch (error) {
@@ -149,5 +145,6 @@ fetch("https://defaultef5926db9bdf4f9f9066d8e7f03943.f7.environment.api.powerpla
     }
 };
 </script>
+
 </body>
 </html>
