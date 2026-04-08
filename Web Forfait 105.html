@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demande Forfait Hors Garantie</title>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #f4f4f9; display: flex; justify-content: center; padding: 20px; margin: 0; }
+        .container { background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); width: 100%; max-width: 850px; }
+        .header { text-align: center; margin-bottom: 30px; }
+        h1 { color: #2c3e50; font-size: 22px; text-transform: uppercase; border-bottom: 3px solid #0056b3; padding-bottom: 10px; margin-top: 0; }
+        .section-title { background: #0056b3; color: white; padding: 10px 15px; border-radius: 5px; margin-top: 25px; margin-bottom: 15px; font-weight: bold; font-size: 14px; text-transform: uppercase; }
+        .rpw-block { background: #fff3cd; border: 2px solid #ffeeba; padding: 20px; border-radius: 10px; margin-bottom: 20px; text-align: center; }
+        .rpw-block label { font-size: 1.2em; color: #856404; display: block; margin-bottom: 10px; font-weight: bold; }
+        .rpw-block input { font-size: 1.3em; font-weight: bold; border: 2px solid #0056b3; text-align: center; color: #0056b3; width: 60%; border-radius: 6px; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .full { grid-column: span 2; }
+        label { display: block; margin-bottom: 5px; font-weight: 600; color: #333; font-size: 13px; }
+        input, textarea { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box; font-size: 14px; }
+        .rgpd { margin-top: 30px; padding: 15px; background: #e8f5e9; border-radius: 8px; border-left: 5px solid #28a745; display: flex; align-items: flex-start; }
+        .rgpd input { width: auto; margin-right: 15px; margin-top: 3px; transform: scale(1.4); }
+        .rgpd label { font-size: 0.9em; cursor: pointer; color: #2e7d32; }
+        button { width: 100%; padding: 20px; background-color: #0056b3; border: none; border-radius: 8px; color: white; font-size: 18px; font-weight: bold; cursor: pointer; margin-top: 20px; text-transform: uppercase; }
+        .offer-section { margin-top: 50px; border-top: 2px solid #eee; padding-top: 30px; }
+        .offer-intro { text-align: center; margin-bottom: 25px; }
+        .offer-intro h2 { color: #0056b3; font-size: 20px; margin-bottom: 10px; }
+        .compare-table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 13px; }
+        .compare-table th, .compare-table td { padding: 12px; border: 1px solid #dee2e6; text-align: center; vertical-align: middle; }
+        .compare-table th { background-color: #f8f9fa; color: #333; }
+        .feature-name { text-align: left !important; font-weight: bold; background: #fff; width: 40%; }
+        .col-solo { width: 30%; background-color: #fdfdfd; }
+        .col-plus { width: 30%; background-color: #e3f2fd; font-weight: bold; border: 2px solid #0056b3 !important; }
+        .highlight-text { color: #0056b3; font-weight: bold; }
+        .price-row { font-size: 15px; font-weight: bold; color: #000; }
+        .sub-price { font-size: 11px; font-weight: normal; display: block; margin-top: 4px; color: #666; }
+        .required-star { color: #d9534f; margin-left: 3px; }
+        @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } .full { grid-column: span 1; } .compare-table { font-size: 11px; } }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>Demande Forfait Hors Garantie</h1>
+    </div>
+
+    <form id="monFormulaire">
+        <div class="rpw-block">
+            <label>N° de compte du RPW <span class="required-star">*</span></label>
+            <input type="text" name="rpw" required>
+        </div>
+
+        <div class="section-title">Informations Produit</div>
+        <div class="grid">
+            <div><label>Marque Produit <span class="required-star">*</span></label><input type="text" name="marque" required></div>
+            <div><label>Référence Produit <span class="required-star">*</span></label><input type="text" name="ref_produit" required></div>
+            <div><label>Code industriel</label><input type="text" name="code_indus"></div>
+            <div><label>Numéro de série</label><input type="text" name="num_serie"></div>
+        </div>
+
+        <div class="section-title">Coordonnées Consommateur</div>
+        <div class="grid">
+            <div><label>Nom <span class="required-star">*</span></label><input type="text" name="nom" required></div>
+            <div><label>Prénom <span class="required-star">*</span></label><input type="text" name="prenom" required></div>
+            <div class="full"><label>Adresse <span class="required-star">*</span></label><input type="text" name="adresse" required></div>
+            <div><label>Code postal <span class="required-star">*</span></label><input type="text" name="cp" required></div>
+            <div><label>Ville <span class="required-star">*</span></label><input type="text" name="ville" required></div>
+            <div><label>Numéro de téléphone <span class="required-star">*</span></label><input type="text" name="tel" required></div>
+            <div><label>Email</label><input type="email" name="email"></div>
+            <div class="full"><label>Complément d'adresse</label><input type="text" name="complement"></div>
+        </div>
+
+        <div class="section-title">Détails de l'intervention</div>
+        <div class="full"><label>Descriptif de la panne</label><textarea name="panne" rows="3"></textarea></div>
+
+        <div class="rgpd">
+            <input type="checkbox" id="consent" name="consent" required>
+            <label for="consent">Le consommateur consent à ce que ses informations nous soient transférées afin d'être contacté par les services d'<b>European Appliances France</b> pour sa demande de réparation. <span class="required-star">*</span></label>
+        </div>
+
+        <button type="submit" id="btnEnvoyer">Valider et envoyer la demande</button>
+    </form>
+
+    <div class="offer-section">
+        <div class="offer-intro">
+            <h2>Nous avons la solution sur mesure pour vous et votre appareil</h2>
+            <p>Votre appareil ne bénéficie plus de sa garantie légale de 2 ans.</p>
+        </div>
+
+        <table class="compare-table">
+            <thead>
+                <tr>
+                    <th class="feature-name"></th>
+                    <th class="col-solo"><b>Forfait Solo</b></th>
+                    <th class="col-plus"><b>Forfait Intervention Plus</b></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td class="feature-name">Techniciens agréés</td><td>Oui</td><td>Oui</td></tr>
+                <tr><td class="feature-name">Pièces détachées d'origine</td><td>Oui</td><td>Oui</td></tr>
+                <tr><td class="feature-name">Prise en charge complète (Pièces, main d'œuvre et déplacement)</td><td>Oui</td><td>Oui</td></tr>
+                <tr><td class="feature-name">Forfait remboursé si irréparable</td><td style="color:#d9534f">Non</td><td style="color:#28a745">Oui</td></tr>
+                <tr><td class="feature-name">Échange (si nouvelle panne irréparable)</td><td style="color:#d9534f">Non</td><td style="color:#28a745">Oui</td></tr>
+                <tr><td class="feature-name">Protection dommages accidentels</td><td style="color:#d9534f">Non</td><td style="color:#28a745">Oui</td></tr>
+                <tr><td class="feature-name">Éligible bonus réparation*</td><td>Oui</td><td style="color:#d9534f">Non</td></tr>
+                <tr><td class="feature-name">Frais de déplacement (si non réparable)</td><td>119€</td><td><b>0€</b></td></tr>
+                <tr><td class="feature-name">Garantie de la réparation</td><td>3 mois</td><td><b>1 an</b></td></tr>
+                <tr><td class="feature-name">Mode de paiement</td><td>Paiement unique</td><td>Prélèvement mensuel</td></tr>
+                <tr class="price-row">
+                    <td class="feature-name">PRIX</td>
+                    <td>à partir de 179€ <span class="sub-price">(hors bonus réparation)</span></td>
+                    <td class="highlight-text">à partir de 17,99€/mois</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+const form = document.getElementById('monFormulaire');
+const btn = document.getElementById('btnEnvoyer');
+
+form.onsubmit = async function(e) {
+    e.preventDefault();
+    btn.disabled = true;
+    btn.innerText = "Traitement...";
+
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+        // *** COLLE TON LIEN GOOGLE APPS SCRIPT CI-DESSOUS ENTRE LES GUILLEMETS ***
+        const response = await fetch("https://script.google.com/macros/s/AKfycbwsFansCRrNXhkS7xQOQQnYmCtcHsifSPwyimXt22UpwSfe2yppVfwOAEUmDzfre2ie9A/exec", {
+            method: "POST",
+            body: JSON.stringify(data)
+        });
+
+        alert("Votre demande a été enregistrée avec succès.");
+        form.reset();
+    } catch (error) {
+        alert("Erreur lors de l'envoi. Vérifiez votre connexion.");
+    } finally {
+        btn.disabled = false;
+        btn.innerText = "Valider et envoyer la demande";
+    }
+};
+</script>
+
+</body>
+</html>
