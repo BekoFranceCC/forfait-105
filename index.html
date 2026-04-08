@@ -116,28 +116,34 @@
     </div>
 </div>
 
-<script>
-document.getElementById("monFormulaire").addEventListener("submit", function(e) {
+
+script>
+document.getElementById("monFormulaire").addEventListener("submit", async function (e) {
   e.preventDefault();
 
   const data = Object.fromEntries(new FormData(this).entries());
 
-  fetch("https://script.google.com/macros/s/AKfycbwsFansCRrNXhkS7xQOQQnYmCtcHsifSPwyimXt22UpwSfe2yppVfwOAEUmDzfre2ie9A/exec", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data)
-  });
+  try {
+    // Google Sheet
+    await fetch("https://script.google.com/macros/s/AKfycbwsFansCRrNXhkS7xQOQQnYmCtcHsifSPwyimXt22UpwSfe2yppVfwOAEUmDzfre2ie9A/exec", {
+      method: "POST",
+      body: JSON.stringify(data)
+    });
 
-  fetch("https://defaultef5926db9bdf4f9f9066d8e7f03943.f7.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/aaadf47f51f6415cb5ae12c94f643b3d/triggers/manual/paths/invoke?api-version=1", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data)
-  });
+    // Excel via Power Automate
+    await fetch("https://defaultef5926db9bdf4f9f9066d8e7f03943.f7.environment.api.powerplatform.com/powerautomate/automations/direct/workflows/aaadf47f51f6415cb5ae12c94f643b3d/triggers/manual/paths/invoke?api-version=1", {
+      method: "POST",
+      body: JSON.stringify(data)
+    });
 
-  alert("Envoyé");
-  this.reset();
+    alert("Envoyé");
+    this.reset();
+
+  } catch (err) {
+    console.error(err);
+    alert("ERREUR : envoi impossible");
+  }
 });
 </script>
-
 </body>
 </html>
